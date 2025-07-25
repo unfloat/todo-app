@@ -39,6 +39,10 @@ todo-app/
 
 ## Quick Start
 
+### Prerequisites
+
+- Node.js **v22.x**
+
 ### Installation
 
 ```bash
