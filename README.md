@@ -90,8 +90,6 @@ npm run test:e2e:open
 
 # Run E2E tests with dev servers
 npm run test:e2e:dev
-
-
 ```
 
 ### Frontend Unit Tests (Vitest + React Testing Library)
@@ -135,7 +133,6 @@ npm run test:api:coverage:open
 - **API Tests:** Authentication endpoints, Todo CRUD endpoints, Error handling
 - **Unit Tests:** React component testing with Vitest + React Testing Library
 - **Total:** 50+ API tests + 4 E2E test suites + 20+ unit tests
-- **Coverage Threshold:** 80% (branches, functions, lines, statements)
 
 ## API Endpoints
 
@@ -181,72 +178,6 @@ For production:
 
 - `JWT_SECRET` - Secret key for JWT tokens
 - `PORT` - Server port (default: 5000)
-
-## Available Scripts
-
-### Root Directory
-
-```bash
-npm run install:all          # Install all dependencies
-npm run dev                  # Start both servers
-npm run dev:backend          # Start backend only
-npm run dev:frontend         # Start frontend only
-npm run build               # Build for production
-npm run test:e2e            # Run E2E tests
-npm run test:e2e:open       # Open Cypress UI
-npm run test:e2e:dev        # Run E2E tests with dev servers
-npm run test:api            # Run API tests
-npm run test:api:watch      # Run API tests in watch mode
-npm run test:api:coverage   # Run API tests with coverage
-npm run test:frontend       # Run frontend unit tests
-npm run test:frontend:ui    # Run frontend tests with UI
-npm run test:frontend:coverage # Run frontend tests with coverage
-```
-
-### Backend Directory
-
-```bash
-npm start                   # Start production server
-npm run dev                 # Start development server
-npm test                    # Run all API tests
-npm run test:watch          # Run tests in watch mode
-npm run test:coverage       # Run tests with coverage
-```
-
-### Frontend Directory
-
-```bash
-npm run dev                 # Start development server
-npm run build               # Build for production
-npm run preview             # Preview production build
-npm run test:e2e            # Run E2E tests
-npm run test:e2e:open       # Open Cypress UI
-npm test                    # Run unit tests
-npm run test:ui             # Run tests with UI
-npm run test:coverage       # Run tests with coverage
-```
-
-## CI/CD Pipeline
-
-This project uses GitHub Actions for continuous integration:
-
-### **Automated Testing**
-
-- ✅ **Backend API Tests** - Runs on Node.js 18.x and 20.x
-- ✅ **Frontend E2E Tests** - Cypress tests with real browser
-- ✅ **Code Coverage** - Jest coverage reports with 80% threshold
-- ✅ **Artifact Upload** - Test screenshots and videos on failure
-
-### **Pipeline Triggers**
-
-- Push to `main` or `develop` branches
-- Pull requests to `main` or `develop` branches
-
-### **Coverage Reports**
-
-- HTML coverage reports generated automatically
-- Coverage comments on pull requests
-- Coverage artifacts uploaded for review
 
 ## Contributing
 

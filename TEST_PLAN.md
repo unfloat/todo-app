@@ -7,18 +7,21 @@ This document outlines the testing strategy for the React Todo Application, a fu
 ## 2. What is Being Tested
 
 ### 2.1 Frontend Components
+
 - **Authentication Components**: Login and Register forms with validation
 - **Todo Management Components**: TodoForm (creation), TodoItem (individual todo), TodoApp (main container)
 - **Navigation Components**: Navbar with logout functionality
 - **User Interface**: Form interactions, state management, error handling
 
 ### 2.2 Backend API Endpoints
+
 - **Authentication Routes**: `/api/auth/register`, `/api/auth/login`, `/api/auth/profile`
 - **Todo Routes**: `/api/todos` (CRUD operations), `/api/todos/:id/toggle`
 - **Middleware**: JWT authentication, input validation, error handling
 - **Database Operations**: SQLite queries, data persistence
 
 ### 2.3 End-to-End User Workflows
+
 - **User Registration and Login**: Complete authentication flow
 - **Todo Lifecycle**: Create, read, update, delete, and toggle todos
 - **Data Persistence**: Verify data survives page refreshes and sessions
@@ -27,9 +30,11 @@ This document outlines the testing strategy for the React Todo Application, a fu
 ## 3. Test Coverage Areas
 
 ### 3.1 Frontend Unit Tests (Vitest + React Testing Library)
+
 **Coverage**: Reports generated (no minimum threshold enforced)
 
 **Test Areas**:
+
 - Component rendering and UI elements
 - User interactions (clicks, form inputs, state changes)
 - Form validation and error handling
@@ -38,14 +43,17 @@ This document outlines the testing strategy for the React Todo Application, a fu
 - Component lifecycle and state management
 
 **Files Tested**:
+
 - `Login.jsx` - Authentication form and logic
 - `TodoForm.jsx` - Todo creation form
 - `TodoItem.jsx` - Individual todo management
 
 ### 3.2 Backend API Tests (Jest + Supertest)
+
 **Coverage**: Reports generated (no minimum threshold enforced)
 
 **Test Areas**:
+
 - HTTP endpoint functionality
 - Request/response validation
 - Database operations and data integrity
@@ -54,11 +62,14 @@ This document outlines the testing strategy for the React Todo Application, a fu
 - Input validation and sanitization
 
 **Endpoints Tested**:
+
 - Authentication: Register, Login, Profile
 - Todos: Create, Read, Update, Delete, Toggle
 
 ### 3.3 End-to-End Tests (Cypress)
+
 **Test Areas**:
+
 - Complete user workflows
 - Cross-browser compatibility
 - Real API integration
@@ -66,6 +77,7 @@ This document outlines the testing strategy for the React Todo Application, a fu
 - Data persistence across sessions
 
 **Test Suites**:
+
 - Authentication flow (register, login, logout)
 - Todo management (CRUD operations)
 - End-to-end workflows (full user journey)
@@ -74,6 +86,7 @@ This document outlines the testing strategy for the React Todo Application, a fu
 ## 4. Tools Used and Why
 
 ### 4.1 Frontend Testing
+
 - **Vitest**: Fast unit testing framework optimized for Vite projects
 - **React Testing Library**: Promotes testing user behavior over implementation details
 - **@testing-library/jest-dom**: Custom matchers for DOM assertions
@@ -81,23 +94,26 @@ This document outlines the testing strategy for the React Todo Application, a fu
 - **jsdom**: DOM environment for component testing
 
 ### 4.2 Backend Testing
+
 - **Jest**: Comprehensive testing framework with built-in mocking
 - **Supertest**: HTTP assertion library for API testing
 - **SQLite3**: In-memory database for isolated test environments
 
 ### 4.3 End-to-End Testing
+
 - **Cypress**: Modern E2E testing framework with real browser automation
 - **wait-on**: Utility for waiting on server availability
 - **concurrently**: Run multiple processes simultaneously
 
-### 4.4 Coverage and CI/CD
+### 4.4 Coverage
+
 - **@vitest/coverage-v8**: Code coverage for frontend tests
 - **nyc**: Code coverage for backend tests
-- **GitHub Actions**: Automated testing and deployment pipeline
 
 ## 5. How to Run the Tests
 
 ### 5.1 Frontend Tests
+
 ```bash
 # Run unit tests
 npm run test:frontend
@@ -113,6 +129,7 @@ npm run test:frontend:coverage:ui
 ```
 
 ### 5.2 Backend Tests
+
 ```bash
 # Run API tests
 npm run test:api
@@ -128,6 +145,7 @@ npm run test:api:coverage:html
 ```
 
 ### 5.3 End-to-End Tests
+
 ```bash
 # Run E2E tests
 npm run test:e2e
@@ -140,6 +158,7 @@ npm run test:e2e:dev
 ```
 
 ### 5.4 All Tests
+
 ```bash
 # Install all dependencies
 npm run install:all
@@ -157,16 +176,18 @@ npm run test:e2e
 ## 6. Test Environment Setup
 
 ### 6.1 Prerequisites
-- Node.js 18.x or 20.x
+
+- Node.js 22x
 - npm 8.x or higher
 - Git
 
 ### 6.2 Database Setup
+
 - **Development**: SQLite database (`todo.db`) created automatically
 - **Testing**: In-memory SQLite databases for isolated test runs
-- **CI/CD**: Separate test databases for each test suite
 
 ### 6.3 Environment Variables
+
 ```bash
 # Backend
 NODE_ENV=test
@@ -180,12 +201,14 @@ VITE_API_URL=http://localhost:5000
 ## 7. Assumptions and Limitations
 
 ### 7.1 Assumptions
+
 - **Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
 - **Network**: Stable internet connection for API calls
 - **Performance**: Tests run on development-grade hardware
 - **Data**: Test data is isolated and doesn't affect production
 
 ### 7.2 Limitations
+
 - **Visual Testing**: No automated visual regression testing
 - **Mobile Testing**: Limited mobile device testing (desktop-focused)
 - **Performance Testing**: No load or stress testing implemented
@@ -193,6 +216,7 @@ VITE_API_URL=http://localhost:5000
 - **Accessibility**: No automated accessibility testing
 
 ### 7.3 Known Issues
+
 - **Test Isolation**: Some tests may have timing dependencies
 - **Database Constraints**: Foreign key constraints disabled in test environment
 - **Coverage Gaps**: Some utility functions and error boundaries not fully covered
@@ -200,37 +224,28 @@ VITE_API_URL=http://localhost:5000
 ## 8. Test Data Management
 
 ### 8.1 Test Fixtures
+
 - **Users**: Predefined test users for authentication tests
 - **Todos**: Sample todo items for CRUD operation tests
 - **API Responses**: Mocked responses for frontend testing
 
 ### 8.2 Data Cleanup
+
 - **Unit Tests**: Automatic cleanup after each test
 - **E2E Tests**: Database reset between test runs
 - **API Tests**: Isolated database instances per test file
 
-## 9. Continuous Integration
-
-### 9.1 GitHub Actions Pipeline
-- **Triggers**: Push to main/develop, pull requests
-- **Matrix Testing**: Node.js 18.x and 20.x
-- **Artifacts**: Coverage reports, test screenshots/videos
-- **Coverage Reporting**: Automated PR comments with coverage data
-
-### 9.2 Quality Gates
-- **Test Pass Rate**: 100% test pass rate required
-- **Build Status**: All tests must pass for merge
-- **Coverage**: Reports generated for monitoring (no minimum threshold enforced)
-
 ## 10. Maintenance and Updates
 
 ### 10.1 Regular Tasks
+
 - Update test dependencies quarterly
 - Review and update test data as needed
 - Monitor test execution times and optimize
 - Update test documentation with new features
 
 ### 10.2 Test Maintenance
+
 - Refactor tests when components change
 - Add tests for new features
 - Remove obsolete tests
@@ -240,4 +255,4 @@ VITE_API_URL=http://localhost:5000
 
 **Document Version**: 1.0  
 **Last Updated**: July 2025
-**Maintained By**: Development Team 
+**Maintained By**: Development Team
