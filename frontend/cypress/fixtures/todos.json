@@ -1,0 +1,23 @@
+{
+  "sampleTodo": {
+    "title": "Test Todo Item",
+    "description": "This is a test todo description"
+  },
+  "simpleTodo": {
+    "title": "Simple Todo",
+    "description": ""
+  },
+  "longTodo": {
+    "title": "This is a very long todo title that should be handled properly by the application",
+    "description": "This is a very long description that should also be handled properly by the application and should not cause any layout issues or overflow problems"
+  },
+  "specialCharsTodo": {
+    "title": "Todo with special chars: !@#$%^&*()",
+    "description": "Description with special chars: <script>alert('test')</script>"
+  },
+  "editTodo": {
+    "originalTitle": "Original Todo",
+    "newTitle": "Updated Todo",
+    "newDescription": "Updated description"
+  }
+} 

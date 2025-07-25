@@ -1,0 +1,48 @@
+{
+  "name": "todo-app-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack Todo App with React, Express, and SQLite",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run preview",
+    "clean": "rimraf node_modules frontend/node_modules backend/node_modules",
+    "clean:install": "npm run clean && npm run install:all",
+    "test:e2e": "cd frontend && npm run test:e2e",
+    "test:e2e:open": "cd frontend && npm run test:e2e:open",
+    "test:e2e:dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"wait-on http://localhost:5173 && cd frontend && npm run test:e2e\"",
+    "test:api": "cd backend && npm test",
+    "test:api:watch": "cd backend && npm run test:watch",
+    "test:api:coverage": "cd backend && npm run test:coverage",
+    "test:api:coverage:html": "cd backend && npm run test:coverage:html",
+    "test:api:coverage:open": "cd backend && npm run test:coverage:open",
+    "test:frontend": "cd frontend && npm test",
+    "test:frontend:ui": "cd frontend && npm run test:ui",
+    "test:frontend:coverage": "cd frontend && npm run test:coverage",
+    "test:frontend:coverage:ui": "cd frontend && npm run test:coverage:ui"
+  },
+  "keywords": [
+    "react",
+    "express",
+    "sqlite",
+    "todo",
+    "authentication",
+    "fullstack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^6.0.1",
+    "wait-on": "^8.0.4"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
